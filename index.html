@@ -326,8 +326,8 @@
         function drawHUD() {
           ctx.font = "20px monospace";
           ctx.fillStyle = "#111827";
-          ctx.fillText(${playerScore}, 20, canvas.height / 2 + 30);
-          ctx.fillText(${aiScore}, 20, 30);
+          ctx.fillText(playerScore, 20, canvas.height / 2 + 30);
+          ctx.fillText(aiScore, 20, 30);
         }
 
         // ─────────────────── End‑game effects ───────────────────
@@ -335,10 +335,9 @@
           gameOver = true;
           cancelAnimationFrame(animationFrameId);
           overlay.classList.add("show");
-          overlay.innerHTML = <h2 class="blink" style="color:${
+          overlay.innerHTML = `<h2 class="blink" style="color:${
             playerWon ? "#10b981" : "#ef4444"
-          }">${playerWon ? "You won!" : "You lost!"}</h2>;
-
+          }">${playerWon ? "You won!" : "You lost!"}</h2>`;
           if (playerWon) {
             // Correct constructor usage for UMD build
             fireworksInstance = new window.Fireworks.default(
@@ -370,7 +369,7 @@
               div.style.left = left + "px";
               const angle = (Math.random() * 60 - 30) + "deg";
               div.style.setProperty("--angle", angle);
-              div.style.transform = rotate(${angle});
+              div.style.transform = `rotate(${angle})`;
               document.body.appendChild(div);
               setTimeout(() => div.remove(), 4000);
               if (Date.now() > end) clearInterval(interval);
